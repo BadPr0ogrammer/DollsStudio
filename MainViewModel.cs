@@ -271,13 +271,14 @@ namespace DollsStudio
                     StopAnimation();
                 }
             });
-
+            /*
             SimplifyCommand = new RelayCommand(Simplify, CanSimplify);
             ResetCommand = new RelayCommand((o) =>
             {
                 simpleModel = _orgMesh;
                 _simHelper = new MeshSimplification(simpleModel);
             }, CanSimplify);
+            */
         }
 
         private void CopyAsBitmapToClipBoard(Viewport3DX viewport)
@@ -341,13 +342,13 @@ namespace DollsStudio
                    if (result.IsCompleted)
                    {
                        _scene = result.Result;
-
+                       /*
                        //.Select(x => x.Geometry as MeshGeometry3D).ToArray()[0];
                        var root = _scene.Root;
                        //simpleModel = _scene.Root as Model3D;
                        _orgMesh = simpleModel;
                        _simHelper = new MeshSimplification(simpleModel);
-
+                       */
 
                        Animations.Clear();
                        var oldNode = GroupModel.SceneNode.Items.ToArray();
