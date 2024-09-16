@@ -92,9 +92,10 @@
                 Margin="4"
                 HorizontalAlignment="Stretch"
                 Orientation="Vertical">
-                <Button Command="{Binding ResetCameraCommand}">
-                    Reset Camera
-                </Button>
+                <StackPanel Orientation="Horizontal" Margin="0,3">
+                    <Button Margin="1" Command="{Binding ResetCameraCommand}">Reset Camera</Button>
+                    <Button Margin="1" Command="{Binding ModelSimplifyCommand}">Simplify Model</Button>
+                </StackPanel>
                 <Separator />
                 <CheckBox Margin="4" IsChecked="{Binding ShowWireframe}">Show Wireframe</CheckBox>
                 <CheckBox Margin="4" IsChecked="{Binding ElementName=view, Path=EnableSSAO}">Enable SSAO</CheckBox>

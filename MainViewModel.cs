@@ -20,6 +20,8 @@ using SharpDX;
 using BoundingBox = SharpDX.BoundingBox;
 using OrthographicCamera = HelixToolkit.Wpf.SharpDX.OrthographicCamera;
 using MeshGeometry3D = HelixToolkit.Wpf.SharpDX.MeshGeometry3D;
+using SharpDX.Direct3D9;
+using MeshSimplification = HelixToolkit.Wpf.SharpDX.MeshSimplification;
 
 
 namespace DollsStudio
@@ -80,15 +82,10 @@ namespace DollsStudio
             get => renderEnvironmentMap;
         }
 
-        public ICommand OpenFileCommand
-        {
-            get; set;
-        }
+        public ICommand OpenFileCommand { get; set; }
 
-        public ICommand ResetCameraCommand
-        {
-            set; get;
-        }
+        public ICommand ResetCameraCommand { set; get; }
+        public ICommand ModelSimplifyCommand { set; get; }
 
         public ICommand ExportCommand { private set; get; }
 
@@ -200,17 +197,28 @@ namespace DollsStudio
         public ICommand PlayCommand { get; }
 
         private SynchronizationContext _context = SynchronizationContext.Current;
-        private HelixToolkitScene _scene;
-        private IAnimationUpdater _animationUpdater;
+        private HelixToolkitScene _scene = null;
+        private IAnimationUpdater _animationUpdater = null;
         private List<BoneSkinMeshNode> _boneSkinNodes = new List<BoneSkinMeshNode>();
         private List<BoneSkinMeshNode> _skeletonNodes = new List<BoneSkinMeshNode>();
         private CompositionTargetEx _compositeHelper = new CompositionTargetEx();
         private long _initTimeStamp = 0;
 
-        private MeshSimplification _simHelper;
+        private MeshSimplification _simHelper = null;
 
         public ICommand SimplifyCommand { private set; get; }
         public ICommand ResetCommand { private set; get; }
+        private void doResetCommand()
+        {
+            SimplifyCommand = new RelayCommand(Simplify, CanSimplify);
+
+            ResetCommand = new RelayCommand((o) =>
+            {
+                simpleModel = _orgMesh;
+                _simHelper = new MeshSimplification(simpleModel);
+            }, CanSimplify);
+
+        }
 
         public int NumberOfTriangles { set; get; } = 0;
         public int NumberOfVertices { set; get; } = 0;
@@ -229,7 +237,7 @@ namespace DollsStudio
             }
         }
 
-        private MeshGeometry3D _orgMesh;
+        private MeshGeometry3D _orgMesh = null;
 
         private MainWindow _mainWindow = null;
 
@@ -271,14 +279,111 @@ namespace DollsStudio
                     StopAnimation();
                 }
             });
-            /*
-            SimplifyCommand = new RelayCommand(Simplify, CanSimplify);
-            ResetCommand = new RelayCommand((o) =>
+
+            ModelSimplifyCommand = new DelegateCommand(() =>
             {
-                simpleModel = _orgMesh;
+                _orgMesh = simpleModel;
+                /*
+                foreach (var node in scene.Root.Traverse())
+                {
+                    if (node is MaterialGeometryNode mgn && mgn.Material is PBRMaterialCore material)//MeshNode 
+                    {
+                        MeshGeometry3D geom = new MeshGeometry3D();
+                        geom = mgn.Geometry as MeshGeometry3D;
+                        meshGeomList.Add(geom);
+                    }
+                }
+
+                simpleModel = new MeshGeometry3D();
+                simpleModel = MeshGeometry3D.Merge(meshGeomList.ToArray());
+
                 _simHelper = new MeshSimplification(simpleModel);
-            }, CanSimplify);
+                _simHelper.Simplify();
+
+                _scene.Root.Items[0] = simpleModel as SceneNode;
+                CommandManager.InvalidateRequerySuggested();
+                */
+                /*
+                StopAnimation();
+                var syncContext = SynchronizationContext.Current;
+                IsLoading = true;
+                Task.Run(() =>
+                {
+                    var loader = new Importer();
+                    HelixToolkitScene scene = null;// = loader.Load(path);
+                    scene.Root.Attach(EffectsManager); // Pre attach scene graph
+                    scene.Root.UpdateAllTransformMatrix();
+                    if (scene.Root.TryGetBound(out var bound))
+                    {
+                        /// Must use UI thread to set value back.
+                        syncContext.Post((o) => { ModelBound = bound; }, null);
+                    }
+                    if (scene.Root.TryGetCentroid(out var centroid))
+                    {
+                        /// Must use UI thread to set value back.
+                        syncContext.Post((o) => { ModelCentroid = centroid.ToPoint3D(); }, null);
+                    }
+                    return scene;
+                }).ContinueWith((result) =>
+                {
+                    IsLoading = false;
+                    if (result.IsCompleted)
+                    {
+                        _scene = result.Result;
+                        Animations.Clear();
+                        var oldNode = GroupModel.SceneNode.Items.ToArray();
+                        GroupModel.Clear(false);
+                        Task.Run(() =>
+                        {
+                            foreach (var node in oldNode)
+                            { node.Dispose(); }
+                        });
+                        if (_scene != null)
+                        {
+                            if (_scene.Root != null)
+                            {
+                                foreach (var node in _scene.Root.Traverse())
+                                {
+                                    if (node is MaterialGeometryNode m)
+                                    {
+                                        //m.Geometry.SetAsTransient();
+                                        if (m.Material is PBRMaterialCore pbr)
+                                        {
+                                            pbr.RenderEnvironmentMap = RenderEnvironmentMap;
+                                        }
+                                        else if (m.Material is PhongMaterialCore phong)
+                                        {
+                                            phong.RenderEnvironmentMap = RenderEnvironmentMap;
+                                        }
+                                    }
+                                }
+                            }
+                            GroupModel.AddNode(_scene.Root);
+                            if (_scene.HasAnimation)
+                            {
+                                var dict = _scene.Animations.CreateAnimationUpdaters();
+                                foreach (var ani in dict.Values)
+                                {
+                                    Animations.Add(ani);
+                                }
+                            }
+                            foreach (var n in _scene.Root.Traverse())
+                            {
+                                n.Tag = new AttachedNodeViewModel(n);
+                            }
+
+                            FocusCameraToScene();
+                        }
+                    }
+                    else if (result.IsFaulted && result.Exception != null)
+                    {
+                        MessageBox.Show(result.Exception.Message);
+                    }
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+            }
             */
+            });
+
         }
 
         private void CopyAsBitmapToClipBoard(Viewport3DX viewport)
@@ -314,6 +419,8 @@ namespace DollsStudio
             }
         }
 
+        List<MeshGeometry3D> meshGeomList = new List<MeshGeometry3D>();
+
         public void OpenTheFile(string path)
         {
             StopAnimation();
@@ -342,14 +449,6 @@ namespace DollsStudio
                    if (result.IsCompleted)
                    {
                        _scene = result.Result;
-                       /*
-                       //.Select(x => x.Geometry as MeshGeometry3D).ToArray()[0];
-                       var root = _scene.Root;
-                       //simpleModel = _scene.Root as Model3D;
-                       _orgMesh = simpleModel;
-                       _simHelper = new MeshSimplification(simpleModel);
-                       */
-
                        Animations.Clear();
                        var oldNode = GroupModel.SceneNode.Items.ToArray();
                        GroupModel.Clear(false);
@@ -546,7 +645,7 @@ namespace DollsStudio
             Task.Factory.StartNew(() =>
             {
                 var sw = Stopwatch.StartNew();
-                var model = _simHelper.Simplify(size, 7, true, Lossless);
+                var model = _simHelper.Simplify(size, 20, true, Lossless);// was 7
                 sw.Stop();
                 CalculationTime = sw.ElapsedMilliseconds;
                 model.Normals = model.CalculateNormals();
