@@ -1,0 +1,80 @@
+[
+    {
+        "classes": [
+            {
+                "classInfos": [
+                    {
+                        "name": "QML.Element",
+                        "value": "auto"
+                    },
+                    {
+                        "name": "QML.Creatable",
+                        "value": "false"
+                    },
+                    {
+                        "name": "QML.UncreatableReason",
+                        "value": ""
+                    }
+                ],
+                "className": "Manager",
+                "lineNumber": 12,
+                "methods": [
+                    {
+                        "access": "public",
+                        "arguments": [
+                            {
+                                "name": "url",
+                                "type": "QUrl"
+                            }
+                        ],
+                        "index": 0,
+                        "name": "openSource",
+                        "returnType": "void"
+                    },
+                    {
+                        "access": "public",
+                        "index": 1,
+                        "name": "playFlag",
+                        "returnType": "void"
+                    }
+                ],
+                "object": true,
+                "qualifiedClassName": "Manager",
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QObject"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "manager.h",
+        "outputRevision": 69
+    },
+    {
+        "classes": [
+            {
+                "className": "VtkItem",
+                "lineNumber": 20,
+                "object": true,
+                "qualifiedClassName": "VtkItem",
+                "signals": [
+                    {
+                        "access": "public",
+                        "index": 0,
+                        "name": "clicked",
+                        "returnType": "void"
+                    }
+                ],
+                "superClasses": [
+                    {
+                        "access": "public",
+                        "name": "QQuickVTKItem"
+                    }
+                ]
+            }
+        ],
+        "inputFile": "vtkitem.h",
+        "outputRevision": 69
+    }
+]

@@ -1,0 +1,26 @@
+{
+    "classes": [
+        {
+            "className": "VtkItem",
+            "lineNumber": 20,
+            "object": true,
+            "qualifiedClassName": "VtkItem",
+            "signals": [
+                {
+                    "access": "public",
+                    "index": 0,
+                    "name": "clicked",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QQuickVTKItem"
+                }
+            ]
+        }
+    ],
+    "inputFile": "vtkitem.h",
+    "outputRevision": 69
+}

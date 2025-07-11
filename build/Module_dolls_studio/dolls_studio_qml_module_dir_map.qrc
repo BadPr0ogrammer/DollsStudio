@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="/qt/qml/Module_dolls_studio">/home/user/DollsStudio/build/Module_dolls_studio</file>
+
+  </qresource>
+</RCC>

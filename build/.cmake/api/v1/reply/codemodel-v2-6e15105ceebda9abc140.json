@@ -1,0 +1,187 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-66a54a9ddfce22e1ed8a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "dolls_studio",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "all_aotstats::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_aotstats-Debug-ef489edf4ba69f7258c0.json",
+					"name" : "all_aotstats",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint-Debug-118defc37386cce0f0ef.json",
+					"name" : "all_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_json-Debug-f39c519b246da86818d6.json",
+					"name" : "all_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmllint_module-Debug-3364b8fc3f52af12b4ad.json",
+					"name" : "all_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "all_qmltyperegistrations::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-all_qmltyperegistrations-Debug-9cd55305fd095182b413.json",
+					"name" : "all_qmltyperegistrations",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio-Debug-410794108b879269d4c5.json",
+					"name" : "dolls_studio",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_autogen-Debug-73cd404d6aaafda4e393.json",
+					"name" : "dolls_studio_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_autogen_timestamp_deps-Debug-0531d16e0345cae7dc88.json",
+					"name" : "dolls_studio_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_copy_qml::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_copy_qml-Debug-55b7ea2c5930cb33d888.json",
+					"name" : "dolls_studio_copy_qml",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_copy_res::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_copy_res-Debug-1d3fe6b2c5c1765a6fe7.json",
+					"name" : "dolls_studio_copy_res",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_qmllint::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_qmllint-Debug-7da96201d2173676b6ae.json",
+					"name" : "dolls_studio_qmllint",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_qmllint_json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_qmllint_json-Debug-d6a6308875c47aad6f6e.json",
+					"name" : "dolls_studio_qmllint_json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_qmllint_module::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_qmllint_module-Debug-b911409af29a0e485a65.json",
+					"name" : "dolls_studio_qmllint_module",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "dolls_studio_qmltyperegistration::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-dolls_studio_qmltyperegistration-Debug-7b82f5120079a32b8736.json",
+					"name" : "dolls_studio_qmltyperegistration",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "module_dolls_studio_aotstats_target::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-module_dolls_studio_aotstats_target-Debug-f55367ca1f2c3ca22ae7.json",
+					"name" : "module_dolls_studio_aotstats_target",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/user/DollsStudio/build",
+		"source" : "/home/user/DollsStudio"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 7
+	}
+}

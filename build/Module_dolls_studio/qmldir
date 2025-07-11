@@ -1,0 +1,4 @@
+module Module_dolls_studio
+typeinfo dolls_studio.qmltypes
+prefer :/qt/qml/Module_dolls_studio/
+

@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_dolls_studio_FILE /home/user/DollsStudio/build/dolls_studio)
+set(__QT_DEPLOY_TARGET_dolls_studio_TYPE EXECUTABLE)

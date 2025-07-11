@@ -1,0 +1,5 @@
+--resource
+/home/user/DollsStudio/build/.qt/rcc/qmake_Module_dolls_studio.qrc
+--resource
+/home/user/DollsStudio/build/.qt/rcc/dolls_studio_raw_qml_0.qrc
+/qt/qml/Module_dolls_studio/main.qml

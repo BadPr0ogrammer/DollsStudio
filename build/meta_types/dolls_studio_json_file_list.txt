@@ -1,0 +1,2 @@
+/home/user/DollsStudio/build/dolls_studio_autogen/include/../EWIEGA46WW/moc_manager.cpp.json
+/home/user/DollsStudio/build/dolls_studio_autogen/include/../EWIEGA46WW/moc_vtkitem.cpp.json
